@@ -1,0 +1,55 @@
+body {
+  background-color: #333;
+  font-family: 'Arial';
+}
+
+button {
+  font-size: 24px;
+  padding: 10px 32px;
+  /*width: 120px;*/
+  height: 50px;
+  margin: 16px;
+}
+
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #333;
+  margin: 1em 0;
+  padding: 0;
+}
+
+span {
+  font-size: 24px;
+}
+
+.header {
+  text-align: center;
+  font-size: 48px;
+}
+
+.header h1 {
+  margin: 0;
+}
+
+.main-area {
+  background-color: #555;
+  width: 800px;
+  margin: 0 auto;
+  height: 100%;
+}
+
+.main-area h1 {
+  padding-left: 32px;
+  margin: 0;
+}
+
+.main-area h2 {
+  padding-left: 32px;
+}
+
+#audio-file {
+  font-size: 24px;
+  padding: 10px 32px;
+}
