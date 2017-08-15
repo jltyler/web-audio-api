@@ -49,32 +49,24 @@ const CANVAS_WIDTH = canvas.width
 const CANVAS_HEIGHT = canvas.height
 analyser.fftSize = 256;
 const bufferLength = analyser.frequencyBinCount;
-// console.log(bufferLength);
 const dataArray = new Uint8Array(bufferLength);
-
 canvasCtx.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
-
 var draw = function() {
   drawVisual = requestAnimationFrame(draw)
   analyser.getByteFrequencyData(dataArray)
   canvasCtx.fillStyle = 'rgb(0, 0, 0)'
   canvasCtx.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT)
-
   const barWidth = (CANVAS_WIDTH / bufferLength) * 2.5
   let barHeight
   let x = 0
-
   for (let i = 0; i < bufferLength; i++) {
     barHeight = dataArray[i]
-
     canvasCtx.fillStyle = 'rgb(' + (barHeight+100) + ',50,50)'
     canvasCtx.fillRect(x,CANVAS_HEIGHT-barHeight/2,barWidth,barHeight/2)
-
     x += barWidth + 1
   }
 }
-
-draw();
+draw()
 
 // Declare oscillator vars ahead of time
 let mainOsc
@@ -206,13 +198,13 @@ stopOscButton.onclick = function (e) {
   }
 }
 
-// Mute simply disconnects the main volume node from the output node
-document.getElementById('mute').onclick = function (e) {
+// Pause simply disconnects the main volume node from the output node
+document.getElementById('pause').onclick = function (e) {
   mainGainNode.disconnect(audioContext.destination)
 }
 
-// And unmute reconnects it
-document.getElementById('unmute').onclick = function (e) {
+// And unpause reconnects it
+document.getElementById('unpause').onclick = function (e) {
   mainGainNode.connect(audioContext.destination)
 }
 
