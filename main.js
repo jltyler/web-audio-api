@@ -33,11 +33,22 @@ mainGainNode.connect(audioContext.destination)
 const analyser = audioContext.createAnalyser()
 analyser.connect(mainGainNode)
 
+// Echo
+const echo = audioContext.createDelay()
+echo.delayTime.value = 1.5
+
+const feedback = audioContext.createGain()
+feedback.gain.value = 0.8
+echo.connect(feedback)
+feedback.connect(echo)
+echo.connect(audioContext.destination)
+
 // Lowpass filter
 const filter = audioContext.createBiquadFilter()
 filter.type = 'lowpass'
 filter.Q = 1.0
 filter.connect(analyser)
+filter.connect(echo)
 
 // Oscillator volume (since they can be very loud and annoying)
 const oscGainNode = audioContext.createGain()
