@@ -15,5 +15,7 @@ Everything below is just information being displayed.
 
 ## Mouse controls
 The mouse X position controls the 2 oscillators' frequencies. One is slightly offset from the other.
+
 The mouse X position will also control the playback rate of the sound sample. This will also affect the pitch.
+
 The mouse Y position will change the cutoff frequency for the lowpass filter. Moving the mouse to a higher position on the page will lower the cut off and filter out more of the higher frequencies
