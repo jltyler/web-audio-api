@@ -41,7 +41,7 @@ filter.connect(analyser)
 
 // Oscillator volume (since they can be very loud and annoying)
 const oscGainNode = audioContext.createGain()
-oscGainNode.gain.value = 0.5
+oscGainNode.gain.value = 0.3
 oscGainNode.connect(filter)
 
 // Audio visualizer
