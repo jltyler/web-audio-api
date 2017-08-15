@@ -34,20 +34,28 @@ const analyser = audioContext.createAnalyser()
 analyser.connect(mainGainNode)
 
 // Echo
+// Delay only adds a delay to the signal
 const echo = audioContext.createDelay()
+// Time of delay in seconds
 echo.delayTime.value = 1.5
 
+// We need a feedback gainNode with volume less than one otherwise it would
+// echo forever
 const feedback = audioContext.createGain()
 feedback.gain.value = 0.8
+// Connect echo to the feedback
 echo.connect(feedback)
+// Connect the feedback back to the echo to create the loop
 feedback.connect(echo)
-echo.connect(audioContext.destination)
+// Connect the echo to the main output
+echo.connect(analyser)
 
 // Lowpass filter
 const filter = audioContext.createBiquadFilter()
 filter.type = 'lowpass'
 filter.Q = 1.0
 filter.connect(analyser)
+// Finally, connect the last node in the chain to the echo
 filter.connect(echo)
 
 // Oscillator volume (since they can be very loud and annoying)
